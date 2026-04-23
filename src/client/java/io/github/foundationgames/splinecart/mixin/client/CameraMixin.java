@@ -28,6 +28,7 @@ public abstract class CameraMixin {
             at = @At(value = "INVOKE", shift = At.Shift.AFTER, ordinal = 0, target = "Lnet/minecraft/client/render/Camera;setPos(DDD)V"))
     private void splinecart$updateCamPosWhileRiding(BlockView area, Entity self, boolean thirdPerson, boolean inverseView, float tickDelta, CallbackInfo info) {
         var vehicle = self.getVehicle();
+        if (this.focusedEntity == null) return; // Make sure focusedEntity is not equal null so that it works in Create's Ponder Features
         if (vehicle != null) {
             var tf = vehicle.getVehicle();
             if (tf instanceof TrackFollowerEntity trackFollower) {
