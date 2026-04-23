@@ -28,7 +28,6 @@ public abstract class CameraMixin {
             at = @At(value = "INVOKE", shift = At.Shift.AFTER, ordinal = 0, target = "Lnet/minecraft/client/render/Camera;setPos(DDD)V"))
     private void splinecart$updateCamPosWhileRiding(BlockView area, Entity self, boolean thirdPerson, boolean inverseView, float tickDelta, CallbackInfo info) {
         var vehicle = self.getVehicle();
-        if (this.focusedEntity == null) return; // Make sure focusedEntity is not equal null so that it works in Create's Ponder Features
         if (vehicle != null) {
             var tf = vehicle.getVehicle();
             if (tf instanceof TrackFollowerEntity trackFollower) {
@@ -54,6 +53,7 @@ public abstract class CameraMixin {
             at = @At(value = "INVOKE", shift = At.Shift.AFTER, ordinal = 0, target = "Lorg/joml/Quaternionf;rotationYXZ(FFF)Lorg/joml/Quaternionf;", remap = false))
     private void splinecart$updateCamRotationWhileRiding(float yaw, float pitch, CallbackInfo info) {
         var self = this.focusedEntity;
+        if (self == null) return;
         var vehicle = self.getVehicle();
         var tickDelta = MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(false);
         if (vehicle != null) {
