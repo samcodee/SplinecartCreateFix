@@ -2,10 +2,10 @@
 	"schemaVersion": 1,
 	"id": "splinecart",
 	"version": "${version}",
-	"name": "Splinecart",
+	"name": "SplinecartCreateFix",
 	"description": "Minecart tracks that curve",
 	"authors": [
-		"FoundationGames"
+		"FoundationGames", "samcodee"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
